@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+public class Solution {
+    public static String angryProfessor(int k, List<Integer> a) {
+        int onTimeCount = 0;
+        // Count students who arrived on time (arrival time <= 0)
+        for (int arrivalTime : a) {
+            if (arrivalTime <= 0) {
+                onTimeCount++;
+            }
+        }
+        // If on-time students are less than the threshold k, cancel class (YES)
+        if (onTimeCount < k) {
+            return "YES";
+        } else {
+            return "NO";
+        }
+    }
+ public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); // Number of test cases
+        while (t-- > 0) {
+            int n = scanner.nextInt(); // Total students
+            int k = scanner.nextInt(); // Threshold
+            List<Integer> a = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                a.add(scanner.nextInt());
+            }
+            System.out.println(angryProfessor(k, a));
+        }
+        scanner.close();
+    }
+}
